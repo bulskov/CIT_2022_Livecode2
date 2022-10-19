@@ -22,5 +22,13 @@ while(true)
     var request = Encoding.UTF8.GetString(buffer, 0, rcnt);
 
     Console.WriteLine(request);
+
+    var response = "HTTP/1.1 200 Ok\nContent-Type: text/plain\n\nHello from server :-)";
+
+    var responseBuffer = Encoding.UTF8.GetBytes(response);
+
+    stream.Write(responseBuffer);
+
+    stream.Close(); 
 }
 
