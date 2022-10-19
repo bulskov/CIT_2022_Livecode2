@@ -21,9 +21,22 @@ while(true)
 
     var request = Encoding.UTF8.GetString(buffer, 0, rcnt);
 
-    Console.WriteLine(request);
+    var lines = request.Split("\n");
 
-    var response = "HTTP/1.1 200 Ok\nContent-Type: text/plain\n\nHello from server :-)";
+    Console.WriteLine(lines[0]);
+
+    var response = "HTTP/1.1 200 Ok\nContent-Type: text/plain\n\n";
+
+    if (lines[0].Contains("categories"))
+    {
+        response += "category(id=1, name=testing)";
+    }
+    else
+    {
+        response += "Hello from server: -)";
+    }
+
+    
 
     var responseBuffer = Encoding.UTF8.GetBytes(response);
 
